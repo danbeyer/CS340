@@ -1,0 +1,19 @@
+CREATE TABLE `customers` (
+  `customerID` int(11) NOT NULL AUTO_INCREMENT,
+  `firstName` varchar(255) NOT NULL,
+  `lastName` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `region` varchar(255) NOT NULL,
+  PRIMARY KEY (`customerID`)
+) ENGINE=InnoDB 
+
+
+
+
+CREATE TABLE  `suppliers` (
+ `supplierID` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+ `name` VARCHAR( 255 ) NOT NULL ,
+ `region` VARCHAR( 255 ) NOT NULL ,
+ `totalPurchases` INT( 11 ) NOT NULL ,
+PRIMARY KEY (  `supplierID` )
+) ENGINE = INNODB
