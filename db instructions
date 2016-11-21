@@ -23,3 +23,12 @@ longjo
 <password>
 files located in the public_html folder...(myExample1) subfolder.
 
+Dan's info:
+
+$dbhost = 'oniddb.cws.oregonstate.edu';
+$dbname = 'beyerda-db';
+$dbuser = 'beyerda-db';
+$dbpass = 'Bik0Ek2mqI3IPA1L';
+
+http://web.engr.oregonstate.edu/~beyerda/
+
