@@ -1,3 +1,11 @@
+Hey Dan-
+
+I got us started with a basic first page and table, have a look.
+IM not sure how to use github to work in conjunction with ftp so 
+I sent you teh credentials to what I created...
+Feel free to edit and login, etc..
+
+
 database info:
 $dbhost = 'oniddb.cws.oregonstate.edu';
 $dbname = 'longjo-db';
@@ -13,4 +21,5 @@ http://web.engr.oregonstate.edu/~longjo/
 flop.engr.oregonstate.edu
 longjo
 <password>
+files located in the public_html folder...(myExample1) subfolder.
 
