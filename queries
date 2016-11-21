@@ -17,3 +17,10 @@ CREATE TABLE  `suppliers` (
  `totalPurchases` INT( 11 ) NOT NULL ,
 PRIMARY KEY (  `supplierID` )
 ) ENGINE = INNODB
+
+
+CREATE TABLE  `stores` (
+ `storeID` INT( 11 ) NOT NULL AUTO_INCREMENT ,
+ `region` VARCHAR( 255 ) NOT NULL ,
+PRIMARY KEY (  `storeID` )
+) ENGINE = INNODB
