@@ -1,26 +1,51 @@
-CREATE TABLE `customers` (
-  `customerID` int(11) NOT NULL AUTO_INCREMENT,
-  `firstName` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `region` varchar(255) NOT NULL,
-  PRIMARY KEY (`customerID`)
+CREATE TABLE customers (
+  customerID int(11) NOT NULL AUTO_INCREMENT,
+  firstName varchar(255) NOT NULL,
+  lastName varchar(255) NOT NULL,
+  email varchar(255) NOT NULL,
+  region varchar(255) NOT NULL,
+  PRIMARY KEY (customerID),
 ) ENGINE=InnoDB 
 
 
-
-
-CREATE TABLE  `suppliers` (
- `supplierID` INT( 11 ) NOT NULL AUTO_INCREMENT ,
- `name` VARCHAR( 255 ) NOT NULL ,
- `region` VARCHAR( 255 ) NOT NULL ,
- `totalPurchases` INT( 11 ) NOT NULL ,
-PRIMARY KEY (  `supplierID` )
+CREATE TABLE  suppliers (
+ supplierID INT( 11 ) NOT NULL AUTO_INCREMENT ,
+ name VARCHAR( 255 ) NOT NULL ,
+ region VARCHAR( 255 ) NOT NULL ,
+ totalPurchases INT( 11 ) NOT NULL ,
+PRIMARY KEY (  supplierID )
 ) ENGINE = INNODB
 
-
-CREATE TABLE  `stores` (
- `storeID` INT( 11 ) NOT NULL AUTO_INCREMENT ,
- `region` VARCHAR( 255 ) NOT NULL ,
-PRIMARY KEY (  `storeID` )
+CREATE TABLE  stores (
+ storeID INT( 11 ) NOT NULL AUTO_INCREMENT ,
+ region VARCHAR( 255 ) NOT NULL ,
+PRIMARY KEY (  storeID )
 ) ENGINE = INNODB
+
+CREATE TABLE orders(
+ orderID int(11) NOT NULL AUTO_INCREMENT,
+ orderDate date NOT NULL,
+ cid int(11) NOT NULL,
+ PRIMARY KEY (orderID),
+ FOREIGN KEY (cid) REFERENCES customers(customerID)
+) ENGINE = INNODB
+
+CREATE TABLE products (
+ upc int(11) NOT NULL,
+ description varchar(255) NOT NULL,
+ onHand bigint(20),
+ cost bigint(20),
+ price bigint(20),
+ PRIMARY KEY (upc),
+ FOREIGN KEY (sid) REFERENCES suppliers(supplierID)
+) ENGINE=INNODB
+
+CREATE TABLE product_orders (
+ poID int(11) NOT NULL,
+ oid int(11) NOT NULL,
+ pid int(11) NOT NULL,
+ quantity int(11) NOT NULL,
+ PRIMARY KEY (poID),
+ FOREIGN KEY (oid) REFERENCES orders(orderID),
+ FOREIGN KEY (pid) REFERENCES products(upc)
+) ENGINE=INNODB
