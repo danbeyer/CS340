@@ -1,3 +1,7 @@
+/****************************************************************************************
+			Table Creation Queries (10%)
+****************************************************************************************/
+
 CREATE TABLE customers (
   customerID int(11) NOT NULL AUTO_INCREMENT,
   firstName varchar(255) NOT NULL,
@@ -50,7 +54,60 @@ CREATE TABLE product_orders (
  FOREIGN KEY (pid) REFERENCES products(upc)
 ) ENGINE=INNODB
 
-           
+/**************************************************************************************
+		General Use Queries (30%)
+**************************************************************************************/
+
+/*Query for adding a customer*/
+INSERT INTO customers(customerID, firstName, lastName, email, region) VALUES (?,?,?,?,?)
+
+/*
+Represented by PHP:  
+$stmt = $mysqli->prepare("INSERT INTO customers(customerID, firstName, lastName, email, region) VALUES (?,?,?,?,?)")
+*/
+
+/*Query for adding an order*/
+INSERT INTO orders(orderID, orderDate, cid) VALUES (?,?,?)
+
+/*
+Represented by PHP:
+($stmt = $mysqli->prepare("INSERT INTO orders(orderID, orderDate, cid) VALUES (?,?,?)"))
+*/
+
+/*Query for Product Order*/
+($stmt = $mysqli->prepare("INSERT INTO product_orders(poID, oid, pid, quantity) VALUES (?,?,?,?)"))
+
+/*
+Represented by PHP:
+INSERT INTO product_orders(poID, oid, pid, quantity) VALUES (?,?,?,?)
+*/
+
+/*Query for adding Products*/
+INSERT INTO products(upc, description, onHand, cost, price, sid) VALUES (?,?,?,?,?,?)
+
+/*
+Represented by PHP:  
+($stmt = $mysqli->prepare("INSERT INTO products(upc, description, onHand, cost, price, sid) VALUES (?,?,?,?,?,?)"))
+*/
+
+
+/*Query for adding a Store*/
+INSERT INTO stores(storeID, region) VALUES (?,?)
+
+/*
+Represented by PHP:
+($stmt = $mysqli->prepare("INSERT INTO stores(storeID, region) VALUES (?,?)"))
+*/
+
+/*Query for adding a Supplier...*/
+INSERT INTO suppliers(supplierID, name, region, totalPurchases) VALUES (?,?,?,?)
+/*
+
+Represented by PHP:
+($stmt = $mysqli->prepare("INSERT INTO suppliers(supplierID, name, region, totalPurchases) VALUES (?,?,?,?)"))
+*/
+
+
 /*Query for selecting Supplier by name when entering Product...*/
 SELECT p.upc, p.description, p.onHand, p.cost, p.price, s.supplierID 
 						FROM products as p
