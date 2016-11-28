@@ -49,3 +49,17 @@ CREATE TABLE product_orders (
  FOREIGN KEY (oid) REFERENCES orders(orderID),
  FOREIGN KEY (pid) REFERENCES products(upc)
 ) ENGINE=INNODB
+
+           
+/*Query for selecting Supplier by name when entering Product...*/
+SELECT p.upc, p.description, p.onHand, p.cost, p.price, s.supplierID 
+						FROM products as p
+						INNER JOIN suppliers as s
+						ON s.supplierID = p.sid
+            
+/*Query for filtering Product List by Supplier*/
+SELECT p.upc, p.description, p.onHand, p.cost, p.price, s.supplierID 
+						FROM products as p
+						INNER JOIN suppliers as s
+						ON s.supplierID = p.sid	
+						WHERE p.sid = ?
