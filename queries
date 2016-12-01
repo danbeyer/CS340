@@ -60,6 +60,7 @@ CREATE TABLE product_orders (
 
 /*Query for adding a customer*/
 INSERT INTO customers(customerID, firstName, lastName, email, region) VALUES (?,?,?,?,?)
+INSERT INTO customers(customerID, firstName, lastName, email, region) VALUES ([customerID], [firstName], [lastName], [email], [region]);
 
 /*
 Represented by PHP:  
@@ -68,6 +69,7 @@ $stmt = $mysqli->prepare("INSERT INTO customers(customerID, firstName, lastName,
 
 /*Query for adding an order*/
 INSERT INTO orders(orderID, orderDate, cid) VALUES (?,?,?)
+INSERT INTO orders(orderID, orderDate, cid) VALUES ([orderID], [orderDate], [cid]);
 
 /*
 Represented by PHP:
@@ -76,31 +78,34 @@ Represented by PHP:
 
 /*Query for Product Order*/
 ($stmt = $mysqli->prepare("INSERT INTO product_orders(poID, oid, pid, quantity) VALUES (?,?,?,?)"))
-
+INSERT INTO product_orders(poID, oid, pid, quantity) VALUES ([poID], [oid], [pid], [quantity]);
 /*
+
 Represented by PHP:
 INSERT INTO product_orders(poID, oid, pid, quantity) VALUES (?,?,?,?)
 */
 
 /*Query for adding Products*/
 INSERT INTO products(upc, description, onHand, cost, price, sid) VALUES (?,?,?,?,?,?)
-
+INSERT INTO products(upc, description, onHand, cost, price, sid) VALUES ([upc], [description], [onHand], [cost], [price], [sid]);
 /*
+
 Represented by PHP:  
 ($stmt = $mysqli->prepare("INSERT INTO products(upc, description, onHand, cost, price, sid) VALUES (?,?,?,?,?,?)"))
 */
 
-
 /*Query for adding a Store*/
 INSERT INTO stores(storeID, region) VALUES (?,?)
-
+INSERT INTO stores(storeID, region) VALUES ([storeID], [region]);
 /*
+
 Represented by PHP:
 ($stmt = $mysqli->prepare("INSERT INTO stores(storeID, region) VALUES (?,?)"))
 */
 
 /*Query for adding a Supplier...*/
 INSERT INTO suppliers(supplierID, name, region, totalPurchases) VALUES (?,?,?,?)
+INSERT INTO suppliers(supplierID, name, region, totalPurchases) VALUES ([supplierID], [name], [region], [totalPurchases]);
 /*
 
 Represented by PHP:
